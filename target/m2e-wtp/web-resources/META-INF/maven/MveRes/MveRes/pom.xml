@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>MveRes</groupId>
+  <artifactId>MveRes</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>MveRes Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+ <properties>
+    <tomcat.version>9.0.75</tomcat.version>
+</properties>
+<dependencies>
+	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.22</version>
+	</dependency>
+
+    
+    <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+    <dependency>
+    	<groupId>MovieReservation</groupId>
+    	<artifactId>MovieReservation</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+  
+  <build>
+    <finalName>MveRes</finalName>
+    <resources>
+    <resource>
+          <directory>src/main/webapp</directory>
+          <targetPath>META-INF/resources</targetPath>
+      </resource>
+  </resources>
+  <plugins>
+     <plugin>
+     			<groupId>org.apache.maven.plugins</groupId>
+      			<artifactId>maven-compiler-plugin</artifactId>
+      			<version>3.8.1</version>
+          <inherited>true</inherited>
+          <configuration>
+              <source>1.8</source>
+              <target>1.8</target>
+          </configuration>          
+      </plugin>      
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+              <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <finalName>MveRes-${project.version}</finalName>
+              <archive>
+                  <manifest>
+                      <mainClass>com.example.employees.Main</mainClass>
+                  </manifest>
+              </archive>
+          </configuration>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>     
+  
+	<plugin>
+    	<groupId>org.apache.maven.plugins</groupId>
+   		<artifactId>maven-war-plugin</artifactId>
+ 		<version>3.3.1</version>
+	</plugin> 	
+			
+	</plugins>
+  </build>
+</project>
